@@ -9,45 +9,60 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
     <link href="output.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+            integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="navigation.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body class="show">
 <main class="relative">
 
-    <div id="tools" class="tools absolute w-screen flex justify-center opacity-10 hover:opacity-100 transition duration-500 z-50">
-        <div class="w-1/3 my-6 bg-gradient-to-r from-slate-100 to-slate-200 rounded-full shadow-xl">
-            <div class="w-full rounded-full flex justify-center items-center bg-white bg-opacity-20 backdrop-blur-lg">
-                <button class="icon home focus:bg-slate-300 rounded-full" onclick="firstSlide();">
-                    <i class="fa-solid fa-house-chimney"></i>
-                </button>
-                <div class="buttons">
-                    <button id="restart" class="restart icon focus:bg-slate-300 rounded-full" onclick="firstChapter();">
-                        <i class="fa-solid fa-rotate"></i>
+    <div class="w-screen h-screen absolute z-50">
+
+        <div id="tools"
+             class="tools w-full flex justify-center opacity-10 hover:opacity-100 transition duration-500 z-50">
+            <div class="w-1/3 my-6 bg-gradient-to-r from-slate-100 to-slate-200 rounded-full shadow-xl">
+                <div class="w-full rounded-full flex justify-center items-center bg-white bg-opacity-20 backdrop-blur-lg">
+                    <button class="icon home focus:bg-slate-300 rounded-full" onclick="firstSlide();">
+                        <i class="fa-solid fa-house-chimney"></i>
                     </button>
-                    <button id="previousChapter" class="pprevious icon focus:bg-slate-300 rounded-full" onclick="previousChapter();">
-                        <i class="fa-solid fa-backward-fast"></i>
-                    </button>
-                    <button id="nextChapter" class="nnext icon focus:bg-slate-300 rounded-full" onclick="nextChapter();">
-                        <i class="fa-solid fa-forward-fast"></i>
-                    </button>
-                    <button id="previousSlide" class="previous icon focus:bg-slate-300 rounded-full" onclick="previousSlide();">
-                        <i class="fa-solid fa-left-long"></i>
-                    </button>
-                    <button id="nextSlide" class="next icon focus:bg-slate-300 rounded-full" onclick="nextSlide();">
-                        <i class="fa-solid fa-right-long"></i>
-                    </button>
-                </div>
-                <div class="hidden">
-                    <span id="titles" class="titles"><span>Intro (<span class="position">1</span>/12)</span><span>Tools (<span
-                            class="position">1</span>/24)</span><span>Content (<span class="position">1</span>/8)</span><span>Presentation (<span
-                            class="position">1</span>/12)</span><span>Scripting (<span
-                            class="position">1</span>/12)</span><span>Scripting (<span
-                            class="position">1</span>/3)</span></span>
-                    @ <strong>Frontend CULS 2022</strong>
+                    <div class="buttons">
+                        <button id="restart" class="restart icon focus:bg-slate-300 rounded-full"
+                                onclick="firstChapter();">
+                            <i class="fa-solid fa-rotate"></i>
+                        </button>
+                        <button id="previousChapter" class="pprevious icon focus:bg-slate-300 rounded-full"
+                                onclick="previousChapter();">
+                            <i class="fa-solid fa-backward-fast"></i>
+                        </button>
+                        <button id="nextChapter" class="nnext icon focus:bg-slate-300 rounded-full"
+                                onclick="nextChapter();">
+                            <i class="fa-solid fa-forward-fast"></i>
+                        </button>
+                        <button id="previousSlide" class="previous icon focus:bg-slate-300 rounded-full"
+                                onclick="previousSlide();">
+                            <i class="fa-solid fa-left-long"></i>
+                        </button>
+                        <button id="nextSlide" class="next icon focus:bg-slate-300 rounded-full" onclick="nextSlide();">
+                            <i class="fa-solid fa-right-long"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="absolute bottom-0 right-0 px-4 py-2 text-gray-300 select-none">
+            <span id="titles" class="">
+                <span id="chapter_name"></span>
+                (
+                <span id="current_slide"></span>
+                /
+                <span id="total_slides"></span>
+                )
+            </span>
+            @ <strong>Frontend CULS 2022</strong>
         </div>
     </div>
 

@@ -6,8 +6,9 @@ var firstSlide = () => {};
 var firstChapter = () => {};
 
 class Chapter {
-    constructor(chapterElem, numSlides) {
+    constructor(chapterElem, chapterName, numSlides) {
         this.chapterElem = chapterElem;
+        this.chapterName = chapterName;
         this.numSlides = numSlides;
         this.currentSlide = 0;
     }
@@ -39,6 +40,18 @@ class Chapter {
         this.currentSlide++;
         return this.currentSlide;
     }
+
+    getChapterName() {
+        return this.chapterName;
+    }
+
+    getCurrentSlide() {
+        return this.currentSlide;
+    }
+
+    getNumSlides() {
+        return this.numSlides;
+    }
 }
 
 jQuery(($) => {
@@ -53,7 +66,12 @@ jQuery(($) => {
     $(".chapter").each((i, elem) => {
         let jElem = $(elem);
         let numSlides = jElem.find('section').length;
-        chapters.push(new Chapter(jElem, numSlides));
+        let chapterTitleElem = jElem.find('h2');
+        let chapterName = '';
+        if (chapterTitleElem.length > 0) {
+            chapterName = $(chapterTitleElem[0]).text();
+        }
+        chapters.push(new Chapter(jElem, chapterName, numSlides));
         numChapters++;
     });
 
@@ -72,6 +90,14 @@ jQuery(($) => {
         $(".icon").blur();
     }
 
+    // Utility to update the chapter peek
+    function updateInfo() {
+        let chapter = chapters[currentChapter];
+        $("#chapter_name").text(chapter.getChapterName());
+        $("#current_slide").text(chapter.getCurrentSlide() + 1);
+        $("#total_slides").text(chapter.getNumSlides());
+    }
+
     // Functions that handle movement.
     nextChapter = () => {
         if (currentChapter >= numChapters - 1) {
@@ -80,6 +106,7 @@ jQuery(($) => {
         }
         let oldElem = chapters[currentChapter];
         currentChapter++;
+        updateInfo();
         let needsTimeout = !oldElem.isAtStart();
         oldElem.reset();
         translateX(oldElem.getElem(), 0);
@@ -96,6 +123,7 @@ jQuery(($) => {
         }
         let oldElem = chapters[currentChapter];
         currentChapter--;
+        updateInfo();
         let needsTimeout = !oldElem.isAtStart();
         oldElem.reset();
         translateX(oldElem.getElem(), 0);
@@ -108,6 +136,7 @@ jQuery(($) => {
     nextSlide = () => {
         let chapter = chapters[currentChapter];
         let offset = chapter.nextSlide();
+        updateInfo();
         if (offset === -1) {
             blurIcons();
             return;
@@ -119,6 +148,7 @@ jQuery(($) => {
     previousSlide = () => {
         let chapter = chapters[currentChapter];
         let offset = chapter.previousSlide();
+        updateInfo();
         if (offset === -1) {
             blurIcons();
             return;
@@ -130,6 +160,7 @@ jQuery(($) => {
     firstSlide = () => {
         let chapter = chapters[currentChapter];
         chapter.reset();
+        updateInfo();
         translateX(chapter.getElem(), 0);
         blurIcons();
     };
@@ -139,6 +170,7 @@ jQuery(($) => {
         let needsTimeout = !oldChapter.isAtStart();
         currentChapter = 0;
         oldChapter.reset();
+        updateInfo();
         translateX(oldChapter.getElem(), 0);
         setTimeout(() => {
             translateY(presentation, 0);
@@ -163,5 +195,8 @@ jQuery(($) => {
             return false;
         }
     });
+
+    updateInfo();
+    blurIcons();
 
 });
