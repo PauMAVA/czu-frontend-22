@@ -442,9 +442,16 @@ section {
 }
 
 h2 {
-  font-size: 3.75rem;
+  font-size: 3rem;
   line-height: 1;
   font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
 }
 
 ul {
@@ -457,14 +464,28 @@ ul {
 p {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }
 
 li {
   list-style-type: disc;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  li {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }
 
 .icon {
@@ -656,8 +677,8 @@ li {
   width: 100%;
 }
 
-.w-1\/3 {
-  width: 33.333333%;
+.w-5\/6 {
+  width: 83.333333%;
 }
 
 .select-none {
@@ -760,4 +781,16 @@ li {
 .focus\:bg-slate-300:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+
+@media (min-width: 768px) {
+  .md\:w-2\/3 {
+    width: 66.666667%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:w-1\/3 {
+    width: 33.333333%;
+  }
 }

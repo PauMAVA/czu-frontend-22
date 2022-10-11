@@ -184,6 +184,8 @@ jQuery(($) => {
         39: nextSlide,       // 39 === KEY_RIGHT
         38: previousChapter, // 38 === KEY_UP
         40: nextChapter,     // 40 === KEY_DOWN
+        72: firstSlide,      // 72 === KEY_H
+        82: firstChapter,    // 82 === KEY_R
     }
 
     $(document).on('keydown', (e) => {
