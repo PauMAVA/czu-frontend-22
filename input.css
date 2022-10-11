@@ -4,15 +4,15 @@
 
 @layer base {
     .presentation {
-        @apply flex flex-col
+        @apply flex flex-col transition duration-500
     }
 
     .chapter {
-        @apply flex
+        @apply flex transition duration-500
     }
 
     section {
-        @apply w-screen h-screen px-12 flex flex-col justify-center
+        @apply w-screen h-screen px-24 py-32 flex flex-col justify-around
     }
 
     h2 {
@@ -20,14 +20,18 @@
     }
 
     ul {
-        @apply px-6 py-4
+        @apply px-8 py-4
     }
 
     p {
-        @apply py-4
+        @apply py-4 text-xl
     }
 
     li {
-        @apply list-disc
+        @apply list-disc text-xl
+    }
+
+    .icon {
+        @apply px-4 py-2
     }
 }
